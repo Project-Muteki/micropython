@@ -15,9 +15,23 @@
 #define MICROPY_PY_ATTRTUPLE                    (1)
 #define MICROPY_PY_COLLECTIONS                  (1)
 #define MICROPY_PY_MATH                         (1)
-#define MICROPY_PY_IO                           (0)
+#define MICROPY_PY_IO                           (1)
 #define MICROPY_PY_STRUCT                       (1)
 #define MICROPY_EMIT_ARM                        (1)
+// utime
+#define MICROPY_PY_UTIME                        (1)
+#define MICROPY_PY_UTIME_MP_HAL                 (1)
+// vfs
+#define MICROPY_VFS                             (1)
+#define MICROPY_VFS_POSIX                       (1)
+#define MICROPY_READER_POSIX                    (1)
+#define MICROPY_READER_VFS                      (1)
+// io
+#define MICROPY_PY_IO_IOBASE                    (1)
+// os
+#define MICROPY_PY_UOS                          (1)
+#define MICROPY_PY_SYS_EXIT                     (1)
+#define MICROPY_PY_SYS_ATEXIT                   (1)
 
 // Type definitions for the specific machine.
 

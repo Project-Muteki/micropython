@@ -29,16 +29,21 @@ SRC_QSTR += $(SRC_C) $(SHARED_SRC_C)
 
 # Define the required object files.
 OBJ = $(PY_CORE_O) $(addprefix $(BUILD)/, $(SRC_C:.c=.o))
+OBJ += $(PY_EXTMOD_O)
 OBJ += $(addprefix $(BUILD)/, $(SHARED_SRC_C:.c=.o))
 
 # Define the top-level target, the main firmware.
-all: $(BUILD)/mpy.elf
+all: $(BUILD)/mpy.exe
 
 # Define how to build the firmware.
 $(BUILD)/mpy.elf: $(OBJ)
 	$(ECHO) "LINK $@"
 	$(Q)$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
 	$(Q)$(SIZE) $@
+
+$(BUILD)/mpy.exe: $(BUILD)/mpy.elf
+	$(ECHO) "POSTLINK $@"
+	elf2bestape.py -o $@ $^
 
 # Include remaining core make rules.
 include $(TOP)/py/mkrules.mk
